@@ -21,11 +21,32 @@ class Engine extends SparkProcess with IOUtils {
   val OK: Int = 0
   val ERR: Int = -1
 
-  override def runProcess(runtimeContext: RuntimeContext): Int = Try {
+  override def runProcess(runtimeContext: RuntimeContext): Int =
+//  {
+//    val config: Config = runtimeContext.getConfig
+//    val clubPlayersDs = read(config.getConfig("courseJob.input.ClubPlayers"))
+//    val clubTeamsDs = read(config.getConfig("courseJob.input.ClubTeams"))
+//    val nationalPlayersDs = read(config.getConfig("courseJob.input.NationalPlayers"))
+//    val nationalTeamsDs = read(config.getConfig("courseJob.input.NationalTeams"))
+//    val nationalitiesDs = read(config.getConfig("courseJob.input.Nationalities"))
+//    val playersDs = read(config.getConfig("courseJob.input.Players"))
+////    logger.info(s"schema.toDDl: ${clubTeamsDs.schema.toDDL}")
+//    clubPlayersDs.printSchema()
+//    clubTeamsDs.printSchema()
+//    nationalPlayersDs.printSchema()
+//    nationalTeamsDs.printSchema()
+//    nationalitiesDs.printSchema()
+//    playersDs.printSchema()
+//    0
+//  }
+Try {
     logger.info(s"Process Id: ${runtimeContext.getProcessId}")
     val config: Config = runtimeContext.getConfig
 
     val jwkDate: String = config.getString(ExampleConfigConstants.JwkDate)
+    val devName: String = config.getString("exampleJob.params.devName")
+
+    logger.info(s"+++ $devName")
 
     //Load inputs
     val phonesConfig: Config = config.getConfig(ExampleConfigConstants.PhonesConfig)
@@ -53,9 +74,9 @@ class Engine extends SparkProcess with IOUtils {
 
     //Writing output (read conf file format)
     val customersPhonesConfig: Config = config.getConfig(ExampleConfigConstants.CustomersPhonesConfig)
-    write(outputDF, customersPhonesConfig)
+//    write(outputDF, customersPhonesConfig)
 
-    outputDF.show()
+//    outputDF.show()
 
   } match {
     case Success(_) => OK

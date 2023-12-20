@@ -10,11 +10,11 @@
         <version>0.2.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>example</artifactId>
+    <artifactId>sesion3</artifactId>
     <packaging>jar</packaging>
     <version>0.2.0-SNAPSHOT</version>
 
-    <name>Example module</name>
+    <name>Course Job module</name>
 
     <properties>
         <epsilon-hadoop.version>1.2.0</epsilon-hadoop.version>

@@ -57,6 +57,8 @@
 
     <modules>
         <module>example</module>
+        <module>sesion3</module>
+        <module>sesion4</module>
         <module>testAT</module>
     </modules>
 </project>
