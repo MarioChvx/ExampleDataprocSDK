@@ -2,6 +2,12 @@ package com.bbva.datioamproduct.fdevdatio.sesion4.common
 
 object ConfigConstants {
 
+  val RootTag: String = "sesion4"
+  val InputTag: String = s"$RootTag.input"
+  val Params: String = s"$RootTag.params"
+  val DevName: String = s"$Params.devName"
+  val DataFrames: Seq[String] = Seq()
+
   val Options: String = "options"
   val OverrideSchema: String = s"$Options.overrideSchema"
   val MergeSchema: String = s"$Options.mergeSchema"

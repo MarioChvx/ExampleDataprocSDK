@@ -18,12 +18,12 @@ trait IOUtils {
   private def getSchema(config: Config): Optional[DatioSchema] = Optional.ofNullable {
     if (config.hasPath(SchemaPath)) {
       val schemaPath: String = config.getString(SchemaPath)
-      val icludeMetadata: Boolean = config.getBoolean(IncludeMetadataFields)
-      val icludeDeletedFields: Boolean = config.getBoolean(IncludeDeletedFields)
+      val includeMetadata: Boolean = config.getBoolean(IncludeMetadataFields)
+      val includeDeletedFields: Boolean = config.getBoolean(IncludeDeletedFields)
 
       DatioSchema.getBuilder.fromURI(URI.create(schemaPath))
-        .withMetadataFields(icludeMetadata)
-        .withDeletedFields(icludeDeletedFields)
+        .withMetadataFields(includeMetadata)
+        .withDeletedFields(includeDeletedFields)
         .build()
     } else {
       None.orNull
