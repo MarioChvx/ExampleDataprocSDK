@@ -1,5 +1,6 @@
-package com.bbva.datioamproduct.fdevdatio.sesion4
+package com.bbva.datioamproduct.fdevdatio.sesion5
 
+import com.bbva.datioamproduct.fdevdatio.sesion5.common.ConfigConstants.InputTag
 import com.typesafe.config.Config
 import org.apache.spark.sql.{Dataset, Row}
 
@@ -10,7 +11,7 @@ package object utils {
     def readParquets: Map[String, Dataset[Row]] = {
       config.getObject(InputTag).keySet()
         .map((key: String) => {
-            (key, read(config.getConfig(s"$InputTag.$key")))
+          (key, read(config.getConfig(s"$InputTag.$key")))
         }).toMap
     }
   }
