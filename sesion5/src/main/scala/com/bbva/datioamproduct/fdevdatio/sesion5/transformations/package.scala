@@ -2,9 +2,10 @@ package com.bbva.datioamproduct.fdevdatio.sesion5
 
 import org.apache.spark.sql.functions.{col, lit}
 import org.apache.spark.sql.{Column, DataFrame, Dataset, Row, functions => f}
-import com.bbva.datioamproduct.fdevdatio.sesion5.fields.Field
+import com.bbva.datioamproduct.fdevdatio.sesion5.fields._
 import com.bbva.datioamproduct.fdevdatio.sesion5.fields.fieldToColumn
 import org.apache.spark.sql.catalyst.expressions.NamedExpression
+import org.apache.spark.sql.expressions.UserDefinedFunction
 
 import java.util.Date
 
@@ -41,7 +42,7 @@ package object transformations {
 
     def replaceColumn(field: Field): DataFrame = {
       val columnName: String = field.expr.asInstanceOf[NamedExpression].name
-      val columnColumn: Column = field.expr.asInstanceOf[NamedExpression].apply()
+      val columnColumn: Column = field()
       val columns: Array[Column] = ds.columns.map {
 //        case name: String if name == columnName => field.apply()
 //        case name: String if name == columnName => lit("nuevo valor") as columnName
