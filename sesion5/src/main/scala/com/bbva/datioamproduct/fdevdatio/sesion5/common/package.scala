@@ -9,12 +9,5 @@ import scala.collection.convert.ImplicitConversions.`set asScala`
 
 package object common {
   case class Player(name: String, overall: Int,  skillBallControl: Int)
-  implicit class configExtension(config: Config) extends IOUtils {
-    def readParquets: Map[String, Dataset[Row]] = {
-      config.getObject(InputTag).keySet()
-        .map((key: String) => {
-          (key, read(config.getConfig(s"$InputTag.$key")))
-        }).toMap
-    }
-  }
+
 }

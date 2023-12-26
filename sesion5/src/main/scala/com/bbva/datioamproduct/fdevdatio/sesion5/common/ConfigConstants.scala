@@ -4,8 +4,14 @@ object ConfigConstants {
 
   val RootTag: String = "config"
   val InputTag: String = s"$RootTag.input"
+
+  // PARAMS
   val Params: String = s"$RootTag.params"
   val DevName: String = s"$Params.devName"
+  val FifaUpdateDate: String = s"$Params.fifaUpdateDate"
+  val CutoffDate: String = s"$Params.cutoffDate"
+
+
   val PlayerTag: String = "Players"
 
   val Options: String = "options"

@@ -1,8 +1,8 @@
 package com.bbva.datioamproduct.fdevdatio.sesion5
 
 import com.bbva.datioamproduct.fdevdatio.sesion5.common.ConfigConstants.{DevName, PlayerTag}
-import com.bbva.datioamproduct.fdevdatio.sesion5.common.{Player, configExtension}
-import com.bbva.datioamproduct.fdevdatio.sesion5.utils.IOUtils
+import com.bbva.datioamproduct.fdevdatio.sesion5.common.Player
+import com.bbva.datioamproduct.fdevdatio.sesion5.utils.{IOUtils, configExtension}
 import com.datio.dataproc.sdk.api.SparkProcess
 import com.datio.dataproc.sdk.api.context.RuntimeContext
 import com.typesafe.config.Config

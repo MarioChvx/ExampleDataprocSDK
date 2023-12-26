@@ -17,6 +17,6 @@ object Launcher5 {
       logger.error("Parameter configuration file path is mandatory. Exiting...")
       System.exit(1000)
     }
-    SparkLauncher.main(Array(args(0), "Engine5"))
+    SparkLauncher.main(Array(args(0), "Engine7"))
   }
 }
