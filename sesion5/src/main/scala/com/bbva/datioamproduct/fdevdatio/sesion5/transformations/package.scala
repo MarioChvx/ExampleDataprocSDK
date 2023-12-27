@@ -11,6 +11,10 @@ import java.util.Date
 
 package object transformations {
 
+  implicit class extendField(f: Field) {
+    def getFieldName:String = f.expr.asInstanceOf[NamedExpression].name
+  }
+
   implicit class Transformations(ds: Dataset[Row]) {
 
     private val UpdateDateCol: String = "fifa_update_date"
@@ -41,17 +45,25 @@ package object transformations {
       )
 
     def replaceColumn(field: Field): DataFrame = {
-      val columnName: String = field.expr.asInstanceOf[NamedExpression].name
+      val columnName: String = field.getFieldName
+//      val columnName: String = field.expr.asInstanceOf[NamedExpression].name
       val columnColumn: Column = field()
       val columns: Array[Column] = ds.columns.map {
-//        case name: String if name == columnName => field.apply()
-//        case name: String if name == columnName => lit("nuevo valor") as columnName
         case name: String if name == columnName => columnColumn
         case _@name => f.col(name)
       }
       ds.select(columns: _*)
     }
 
+    def notIn(ds2: DataFrame, by: Field*): DataFrame= {
+      val keyNames = by.map(_.getFieldName)
+      ds.join(ds2, Seq(keyNames :_*), "left_anti")
+    }
+
+    def in(ds2: DataFrame, by: Field*): DataFrame = {
+      val keyNames = by.map(_.getFieldName)
+      ds.join(ds2, Seq(keyNames :_*), "left_semi")
+    }
   }
 
 }

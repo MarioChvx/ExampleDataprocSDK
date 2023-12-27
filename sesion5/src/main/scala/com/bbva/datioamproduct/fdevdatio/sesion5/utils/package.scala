@@ -8,7 +8,7 @@ import scala.collection.convert.ImplicitConversions.`set asScala`
 
 package object utils {
 
-  case class Params(devNem: String, cutoffDate: String)
+  case class Params(devNem: String, fifaUpdateDate: String)
   implicit class configExtension(config: Config) extends IOUtils {
     def readParquets: Map[String, Dataset[Row]] = {
       config.getObject(InputTag).keySet()
@@ -25,7 +25,7 @@ package object utils {
 
     def getParams: Params = Params(
       config.getString(DevName),
-      config.getString(CutoffDate)
+      config.getString(FifaUpdateDate)
     )
 
   }

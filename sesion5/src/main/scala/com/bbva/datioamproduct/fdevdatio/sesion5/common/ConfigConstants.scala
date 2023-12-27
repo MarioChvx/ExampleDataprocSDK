@@ -2,6 +2,8 @@ package com.bbva.datioamproduct.fdevdatio.sesion5.common
 
 object ConfigConstants {
 
+  val Zero: Int = 0
+
   val RootTag: String = "config"
   val InputTag: String = s"$RootTag.input"
 
@@ -9,10 +11,15 @@ object ConfigConstants {
   val Params: String = s"$RootTag.params"
   val DevName: String = s"$Params.devName"
   val FifaUpdateDate: String = s"$Params.fifaUpdateDate"
-  val CutoffDate: String = s"$Params.cutoffDate"
+//  val CutoffDate: String = s"$Params.cutoffDate"
 
-
+  // DATAFRAMES
   val PlayerTag: String = "Players"
+  val ClubPlayersTag: String = "ClubPlayers"
+  val ClubTeams: String = "ClubTeams"
+  val NationalPlayers: String = "NationalPlayers"
+  val NationalTeams: String = "NationalTeams"
+  val Nationalities: String = "Nationalities"
 
   val Options: String = "options"
   val OverrideSchema: String = s"$Options.overrideSchema"
