@@ -44,9 +44,16 @@ trait IOUtils {
     }
   }
 
+  private def getFilter(config: Config): String =
+    if (config.hasPath(FilterTag)) {
+      config.getString(FilterTag)
+    } else {
+      String.valueOf(true)
+    }
 
   def read(inputConfig: Config): DataFrame = {
     val schema: DatioSchema = getSchema(inputConfig).orElse(None.orNull)
+    val filterExp: String = getFilter(inputConfig)
 
     inputConfig.getString(Type) match {
       case "table" =>
@@ -54,6 +61,7 @@ trait IOUtils {
         datioSparkSession.read()
           .datioSchema(schema)
           .table(inputConfig.getString(Table))
+          .filter(filterExp)
 
       case "parquet" =>
 
@@ -61,6 +69,7 @@ trait IOUtils {
           .options(getOptions(inputConfig))
           .datioSchema(schema)
           .parquet(inputConfig.getString(Path))
+          .filter(filterExp)
 
       case _@inputType => throw new Exception(s"Formato de archivo no soportado: $inputType")
     }

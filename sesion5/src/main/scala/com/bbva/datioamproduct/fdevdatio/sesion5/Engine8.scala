@@ -19,7 +19,7 @@ class Engine8 extends SparkProcess with IOUtils{
     val fifaDs = config.readParquets
     val params: Params = config.getParams
     val playersDs: DataFrame = fifaDs(PlayerTag)//.filterPlayersByDate(params.fifaUpdateDate)
-    val nationalPlayersDs: DataFrame = fifaDs(NationalPlayers)//.filterPlayersByDate(params.fifaUpdateDate)
+    val nationalPlayersDs: DataFrame = fifaDs(NationalPlayersTag)//.filterPlayersByDate(params.fifaUpdateDate)
     val clubPlayers: DataFrame = fifaDs(ClubPlayersTag)
 
     val res =

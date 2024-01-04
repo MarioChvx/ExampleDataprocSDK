@@ -1,6 +1,6 @@
 package com.bbva.datioamproduct.fdevdatio.sesion5
 
-import com.bbva.datioamproduct.fdevdatio.sesion5.common.ConfigConstants.{FifaUpdateDate, PlayerTag}
+import com.bbva.datioamproduct.fdevdatio.sesion5.common.ConfigConstants._
 import com.bbva.datioamproduct.fdevdatio.sesion5.transformations.Transformations
 import com.bbva.datioamproduct.fdevdatio.sesion5.utils.{IOUtils, configExtension}
 import com.datio.dataproc.sdk.api.SparkProcess
@@ -23,7 +23,7 @@ class Engine6 extends SparkProcess with IOUtils{
 //    val hola = f.col("x") >= f.col("y")
 //    def =!= (other: Any): Column = ???
     println(s"Max update date ${playersDs.getMaxUpdateDate}")
-    val targetDate: String = config.getString(FifaUpdateDate)
+    val targetDate: String = config.getString(PartitionDate)
     playersDs.filterPlayersByDate(targetDate).show
     0
   }
